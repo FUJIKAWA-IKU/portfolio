@@ -1,0 +1,20 @@
+<div>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+</div>
+<div class="table">
+  <p class="title">各曜日の走行距離(km)</p>
+  <canvas id="myChart_bar_distance"></canvas>
+  <%= javascript_pack_tag 'records/bar_distance' %>
+</div>
+<div class="table">
+  <p class="title">各曜日のトレーニング時間(分)</p>
+  <canvas id="myChart_bar_time"></canvas>
+  <%= javascript_pack_tag 'records/bar_time' %>
+</div>
+<div class="table">
+  <p class="title">一週間の各トレーニング合計時間(分)</p>
+  <canvas id="myChart_pie_training"></canvas>
+  <%= javascript_pack_tag 'records/pie' %>
+</div>

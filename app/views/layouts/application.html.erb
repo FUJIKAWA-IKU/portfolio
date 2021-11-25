@@ -1,16 +1,47 @@
 <!DOCTYPE html>
+<html lang=”ja”>
 <html>
   <head>
-    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="<%= image_path("favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+    <title>Portfolio</title>
+    <meta name="description" content="藤川郁のポートフォリオ">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   </head>
-
-  <body>
+  <header>
+    <ul class="header-list">
+      <% if @current_user %>
+        <li>
+          <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+        </li>
+      <% end %>
+      <% if session[:user_id] %>
+        <li>
+          <%= link_to("新規投稿", "/posts/new") %>
+        </li>
+        <li>
+          <%= link_to("投稿一覧", "/posts/index") %>
+        </li>
+        <li>
+          <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to("新規登録", "/users/new") %>
+        </li>
+        <li>
+          <%= link_to("ログイン", "/users/login") %>
+        </li>
+      <% end %>
+    </ul>
+  </header>
+  <body class="background">
     <%= yield %>
   </body>
 </html>

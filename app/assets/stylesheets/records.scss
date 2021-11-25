@@ -1,0 +1,54 @@
+// Place all the styles related to the records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 100px 0 0;
+}
+
+.forms {
+
+  li {
+    width: 40%;
+    margin: 0 auto;
+    padding: 20px 0;
+    font-size: 20px;
+    border-bottom: solid 0.8px #445252;
+
+    .right {
+      float: right;
+      display: inline-block;
+    }
+
+    .form {
+      float: right;
+    }
+  }
+
+  .buttonbox {
+    text-align: center;
+    padding-top: 30px;
+    
+    .button {
+      font-size: 20px;
+      background-color: rgb(188, 214, 240);
+      color: rgba(0,51,102,1);
+      padding: 5px 20px;
+      border: 1px solid rgba(0,51,102,1);
+      border-radius: 10%;
+    }
+  }
+}
+
+.table {
+  background-color: #fff;
+  padding: 30px 0 50px;
+  width: 90%;
+  margin: 100px auto;
+  .title {
+    font-size: 20px;
+    padding: 0 30px 20px;
+  }
+}

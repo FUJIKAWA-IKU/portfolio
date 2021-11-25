@@ -1,0 +1,31 @@
+<h2>ランニング</h2>
+<ul class="forms">
+  <%= form_for(@record, url:{controller: 'records', action: 'create'}) do |f| %>
+    <li>
+    <%= f.label :runday, "日付" %>
+       <p class="right">
+          <%= raw sprintf(
+            f.date_select(
+              :runday, 
+              use_month_numbers: true,
+              discard_year: true,
+              with_css_class: "form",
+              date_separator: '%s'
+              ),
+              "月 ") + "日 " 
+          %>
+        </p>
+    </li>
+    <li>
+      <%= f.label :distance, "走行距離(km)" %>
+      <%= f.number_field :distance, step: "0.1", min: 0, class: "form" %>
+    </li>
+    <li>
+      <%= f.label :time, "時間(分)" %>
+      <%= f.number_field :time, min: 0, class: "form" %>
+    </li>
+    <div class="buttonbox">
+      <%= f.submit "記録する", class: "button" %>
+    </div>
+  <% end %>
+</ul>

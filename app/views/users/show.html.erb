@@ -1,0 +1,78 @@
+<div>
+  <div class="profile">
+    <div class="postimg">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+    </div>
+    <p class="username">
+      <%= @user.name %>
+    </p>
+    <% if @user.id == @current_user.id %>
+      <p class="privacy">
+        email：<%= @user.email %>, 
+        password：<%= @user.password %>
+      </p>
+      <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    <% else %>
+        <%= link_to("記録を見る", "/records/index/#{@user.id}") %>
+    <% end %>
+  </div>
+  <% if @user.id == @current_user.id %>
+    <ul class="iconbox">
+      <li>
+        <%= link_to image_tag("/images/running.png"), "/records/new" %>
+      </li>
+      <li>
+        <%= link_to image_tag("/images/workout.png"), "/trainings/new" %>
+      </li>
+      <li>
+        <%= link_to image_tag("/images/goodjob.png"), "/records/index/#{@user.id}" %>
+      </li>
+    </ul>
+  <% end %>
+  <div class="postwrapper">
+    <div class="postindex">
+      <% @user.posts.each do |post| %>
+        <div class="post">
+          <div class="postleft">
+            <div class="postleftsub">
+              <div class="postimg">
+                <img src="<%= "/user_images/#{post.user.image_name}" %>">
+              </div>
+              <p class="postusername">
+                <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+              </p>
+            </div>
+            <p class="today">
+              <%= l post.created_at %>
+            </p>
+            <p class="postedit">
+              <% if post.user.id == @current_user.id %>
+                <%= link_to("編集", "/posts/#{post.id}/edit") %>
+              <% end %>
+            </p>
+          </div>
+          <div class="postright">
+              <p class="postcontent">
+                <%= link_to(post.content, "/posts/#{post.id}") %>
+              </p>
+              <p class="like">
+                <% @likes_count = Like.where(post_id: post.id).count %>
+                  <%= @likes_count %>
+                <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+                  <%= link_to("/likes/#{post.id}/destroy") do %>
+                  <img src ="/images/like2.png">
+                  <span class="otsukare">おつかれさま！</span>
+                  <% end %>
+                <% else %>
+                  <%= link_to("/likes/#{post.id}/create") do %>
+                  <img src ="/images/like.png">
+                  <% end %>
+                <% end %>
+              </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @posts %>
+  </div>
+</div>

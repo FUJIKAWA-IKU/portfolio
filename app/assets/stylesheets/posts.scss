@@ -1,0 +1,108 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.postwrapper {
+  margin-bottom: 100px;
+
+  .postindex {
+    text-align: center;
+    margin: 60px auto;
+    width: 70%;
+
+    .post {
+      margin: 30px 0;
+      background-color: #fff;
+      padding: 30px 0;
+      text-align: left;
+      display: flex;
+
+      .postleft {
+        padding: 20px 20px 20px 30px;
+        display: inline-block;
+        border-right: solid 1px #999;
+        width: 20%;
+        
+        .postleftsub{
+          display: flex;
+
+          .postimg {
+            text-align: left;
+            display: inline-block;
+            width: 50px;
+            
+            img {
+              width: 100%;
+            }
+          }
+
+          .postusername {
+            display: inline-block;
+            align-self: center;
+            padding-left: 10px;
+
+            a {
+              color: #445252;
+              font-weight: 600;
+            }
+          }
+        }
+        
+        .today{
+          font-size: 11px;
+          display: block;
+          text-align: right;
+        }
+
+        .postedit{
+          font-size: 12px;
+          text-align: right;
+        }
+      }
+  
+      .postright {
+        display: inline-block;
+        width: 70%;
+        padding: 0 30px;
+        align-self: center;
+
+        .postcontent {
+          text-align: left;
+          align-self: center;
+
+        }
+  
+        .like {
+          text-align: right;
+          align-self: end;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.postform {
+  padding-top : 100px;
+  text-align: center;
+
+  .textarea {
+    width: 50%;
+    height: 100px;
+    font-size: 16px;
+    padding: 5px;
+    color: #333;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .newpost {
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: rgb(188, 214, 240);
+    color: rgba(0,51,102,1);
+    padding: 5px 20px;
+    border: 1px solid rgba(0,51,102,1);
+    border-radius: 10%;
+  }
+}

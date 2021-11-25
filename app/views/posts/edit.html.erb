@@ -1,0 +1,14 @@
+<div>
+  <% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+</div>
+
+<ul class="postform">
+  <%= form_for(@post, url: { controller: 'posts', action: 'update' }) do |f| %>
+  <li>
+      <%= f.text_area :content, :value => "#{@post.content}", class: "textarea" %>
+  </li>
+  <%= f.submit "更新", class: "newpost" %>
+  <% end %>
+</ul>

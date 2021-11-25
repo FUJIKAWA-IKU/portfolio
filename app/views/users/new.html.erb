@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div>
+    <% @user.errors.full_messages.each do |message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  <ul class="forms">
+    <%= form_for(@user, url:{controller: 'users', action: 'create'}) do |f| %>
+      <li>
+        <%= f.label :name, "ユーザー名" %>
+        <%= f.text_field :name, class: "form" %>
+      </li>
+      <li>
+        <%= f.label :email, "email" %>
+        <%= f.text_field :email, class: "form" %>
+      </li>
+      <li>
+        <%= f.label :password, "パスワード" %>
+        <%= f.text_field :password, class: "form" %>
+      </li>
+      <li>
+        <%= f.label :image_name, "画像" %>
+        <%= f.file_field :image_name, class: "form" %>
+      </li>
+      <div class="buttonbox">
+        <%= f.submit "ユーザー新規登録", class: "button" %>
+      </div>
+    <% end %>
+  </ul>
+</div>
