@@ -1,10 +1,16 @@
 <div>
+  <div>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
   <div class="profile">
     <div class="postimg">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
     </div>
     <p class="username">
       <%= @user.name %>
+      <%= link_to("新規", "/posts/new", id: "spec_new") %>
     </p>
     <% if @user.id == @current_user.id %>
       <p class="privacy">
@@ -19,10 +25,10 @@
   <% if @user.id == @current_user.id %>
     <ul class="iconbox">
       <li>
-        <%= link_to image_tag("/images/running.png"), "/records/new" %>
+        <%= link_to image_tag("/images/running.png"), "/records/new", id: "spec_record" %>
       </li>
       <li>
-        <%= link_to image_tag("/images/workout.png"), "/trainings/new" %>
+        <%= link_to image_tag("/images/workout.png"), "/trainings/new", id: "spec_training" %>
       </li>
       <li>
         <%= link_to image_tag("/images/goodjob.png"), "/records/index/#{@user.id}" %>

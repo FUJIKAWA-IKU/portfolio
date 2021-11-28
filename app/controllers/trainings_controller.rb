@@ -15,7 +15,7 @@ class TrainingsController < ApplicationController
       user_id: @current_user.id,
       trainingday: "#{f}",
       parts: "#{params[:training][:parts]}"
-      )
+    )
       @training = Training.find_by(
         user_id: @current_user.id,
         trainingday: "#{f}",
@@ -24,6 +24,7 @@ class TrainingsController < ApplicationController
       @training.time = params[:training][:time]
       if @training.save
         redirect_to("/records/index/#{@current_user.id}")
+        flash[:notice] = "記録しました"
       else
         render("trainings/new")
       end
@@ -36,6 +37,7 @@ class TrainingsController < ApplicationController
       )
       if @training.save
         redirect_to("/records/index/#{@current_user.id}")
+        flash[:notice] = "記録しました"
       else
         render("trainings/new")
       end

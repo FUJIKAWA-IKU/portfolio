@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_165010) do
-
-  create_table "fitnesses", force: :cascade do |t|
-    t.integer "km"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_11_28_114157) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -57,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_11_21_165010) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_name"
     t.string "password"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["password"], name: "index_users_on_password", unique: true
   end
 
 end

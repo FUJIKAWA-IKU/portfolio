@@ -17,6 +17,7 @@ class RecordsController < ApplicationController
       @record.time = params[:record][:time]
       if @record.save
         redirect_to("/records/index/#{@current_user.id}")
+        flash[:notice] = "記録しました"
       else
         render("records/new")
       end
@@ -29,6 +30,7 @@ class RecordsController < ApplicationController
       )
       if @record.save
         redirect_to("/records/index/#{@current_user.id}")
+        flash[:notice] = "記録しました"
       else
         render("records/new")
       end

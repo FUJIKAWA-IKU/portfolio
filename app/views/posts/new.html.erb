@@ -6,7 +6,7 @@
 <ul class="postform">
   <%= form_for(@post, url: { controller: 'posts', action: 'create' }) do |f| %>
   <li>
-      <%= f.text_area :content, class: "textarea" %>
+      <%= f.text_area :content, class: "textarea", id: "postcontent" %>
   </li>
   <%= f.submit "新規投稿", class: "newpost" %>
   <% end %>

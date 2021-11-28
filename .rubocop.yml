@@ -8,3 +8,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - 'config/**/*'
+  NewCops: enable
+
+Metrics/LineLength:
+  Enabled: false

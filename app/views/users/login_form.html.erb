@@ -6,11 +6,11 @@
     <%= form_for(@user, url:{controller: 'users', action: 'login'}) do |f| %>
       <li>
         <%= f.label :email, "email" %>
-        <%= f.text_field :email, class: "form" %>
+        <%= f.text_field :email, class: "form", id: "spec_email" %>
       </li>
       <li>
         <%= f.label :password, "パスワード" %>
-        <%= f.text_field :password, class: "form" %>
+        <%= f.text_field :password, class: "form", id: "spec_password" %>
       </li>
       <div class="buttonbox">
         <%= f.submit "ログイン", class: "button" %>

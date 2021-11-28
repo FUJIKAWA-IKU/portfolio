@@ -10,7 +10,8 @@
             use_month_numbers: true,
             discard_year: true,
             with_css_class: "form",
-            date_separator: '%s'
+            date_separator: '%s',
+            id: "spec_trainingday"
             ),
             "月 ") + "日 " 
         %>
@@ -19,12 +20,15 @@
     <li>
       <%= f.label :parts, "部位" %>
       <p class="right">
-        <%= f.select :parts, [["足", "足"], ["背中", "背中"], ["腕", "腕"], ["お尻", "お尻"], ["胸", "胸"]], include_blank: "選択して下さい" %>
+        <%= f.select :parts,
+        [["足", "足"], ["背中", "背中"], ["腕", "腕"], ["お尻", "お尻"], ["胸", "胸"]], {include_blank: "選択して下さい"},
+        {id: "spec_parts"}
+        %>
       </p>
     </li>
     <li>
       <%= f.label :time, "時間(分)" %>
-      <%= f.number_field :time, min: 0, class: "form" %>
+      <%= f.number_field :time, min: 0, class: "form", id: "spec_time" %>
     </li>
     <div class="buttonbox">
       <%= f.submit "記録する", class: "button" %>

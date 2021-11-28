@@ -1,10 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :user
-
+  belongs_to :user, class_name: "User"
+  has_many :likes, { dependent: :destroy }
   validates :content, { presence: true, length: { maximum: 140 } }
   validates :user_id, { presence: true }
-
-  def user
-    return User.find_by(id: self.user_id)
-  end
 end

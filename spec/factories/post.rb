@@ -1,7 +1,6 @@
 FactoryBot.define do
-
   factory :post do
-    sequence(:content) { |n| "わーい#{n}" }
+    content { "わーい" }
     association :user
   end
 end

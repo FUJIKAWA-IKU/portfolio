@@ -1,6 +1,52 @@
-
-<% @posts.each do |post| %>
-  <p class="iku">
-    <%= post.content %>
-  </p>
-<% end %>
+<div class="postwrapper">
+  <div>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+  <div class="postindex">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="postleft">
+          <div class="postleftsub">
+            <div class="postimg">
+              <img src="<%= "/user_images/#{post.user.image_name}" %>">
+            </div>
+            <p class="postusername">
+              <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+              
+            </p>
+          </div>
+          <p class="today">
+            <%= l post.created_at %>
+          </p>
+          <p class="postedit">
+            <% if post.user.id == @current_user.id %>
+              <%= link_to("編集", "/posts/#{post.id}/edit") %>
+            <% end %>
+          </p>
+        </div>
+        <div class="postright">
+          <p class="postcontent">
+            <%= link_to(post.content, "/posts/#{post.id}") %>
+          </p>
+          <p class="like">
+            <% @likes_count = Like.where(post_id: post.id).count %>
+              <%= @likes_count %>
+            <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+              <%= link_to("/likes/#{post.id}/destroy", id: "spec_like") do %>
+              <img src ="/images/like2.png">
+              <span class="otsukare">おつかれさま！</span>
+              <% end %>
+            <% else %>
+              <%= link_to("/likes/#{post.id}/create", id: "spec_nolike") do %>
+              <img src ="/images/like.png">
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
+</div>
