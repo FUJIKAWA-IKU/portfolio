@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery :except => [:destroy]
   before_action :authenticate_user, { only: [:index, :show, :edit, :update] }
   before_action :forbid_login_user, { only: [:new, :create, :login_form, :login] }
   before_action :ensure_current_user, { only: [:edit, :update] }
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
       name: params[:user][:name],
       email: params[:user][:email],
       password: params[:user][:password],
-      image_name: "user_images/default.png"
+      image_name: "default.png"
     )
     if params[:user][:image_name]
       @user.image_name = "#{@user.name}.jpg"
@@ -85,7 +86,7 @@ class UsersController < ApplicationController
   def ensure_current_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
-      redirect_to("/posts/index")
+      redirect_to("/posts")
     end
   end
 end

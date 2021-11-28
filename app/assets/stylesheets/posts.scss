@@ -69,13 +69,23 @@
         .postcontent {
           text-align: left;
           align-self: center;
-
         }
   
-        .like {
+        .likewrapper {
           text-align: right;
           align-self: end;
           font-size: 12px;
+          .like {
+            display: inline-block;
+            #spec_like {
+              border: none;
+              background-color: #fff;
+            }
+            #spec_nolike {
+              border: none;
+              background-color: #fff;
+            }
+          }
         }
       }
     }

@@ -10,7 +10,6 @@
     </div>
     <p class="username">
       <%= @user.name %>
-      <%= link_to("新規", "/posts/new", id: "spec_new") %>
     </p>
     <% if @user.id == @current_user.id %>
       <p class="privacy">
@@ -18,6 +17,7 @@
         password：<%= @user.password %>
       </p>
       <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <%= link_to("新規投稿", "/posts/new") %>
     <% else %>
         <%= link_to("記録を見る", "/records/index/#{@user.id}") %>
     <% end %>
@@ -58,23 +58,27 @@
             </p>
           </div>
           <div class="postright">
-              <p class="postcontent">
-                <%= link_to(post.content, "/posts/#{post.id}") %>
-              </p>
-              <p class="like">
-                <% @likes_count = Like.where(post_id: post.id).count %>
-                  <%= @likes_count %>
-                <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
-                  <%= link_to("/likes/#{post.id}/destroy") do %>
+            <p class="postcontent">
+              <%= link_to(post.content, "/posts/#{post.id}") %>
+            </p>
+            <div class="likewrapper">
+              <% @likes_count = Like.where(post_id: post.id).count %>
+                <%= @likes_count %>
+              <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+                <div class="like">
+                  <%= button_to("/likes/#{post.id}/destroy", {method: :delete, id: "spec_like"}) do %>
                   <img src ="/images/like2.png">
                   <span class="otsukare">おつかれさま！</span>
-                  <% end %>
-                <% else %>
-                  <%= link_to("/likes/#{post.id}/create") do %>
-                  <img src ="/images/like.png">
-                  <% end %>
+                </div>
                 <% end %>
-              </p>
+              <% else %>
+                <div class="like">
+                  <%= button_to("/likes/#{post.id}/create", method: :post, id: "spec_nolike") do %>
+                  <img src ="/images/like.png">
+                </div>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
