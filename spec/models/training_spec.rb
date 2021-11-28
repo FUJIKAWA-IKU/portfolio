@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Record, type: :model do
+RSpec.describe Training, type: :model do
   let(:test_training) { create(:training) }
 
   it "日時、距離、時間があれば有効な状態であること" do
