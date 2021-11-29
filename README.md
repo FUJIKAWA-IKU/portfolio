@@ -1,24 +1,17 @@
-# README
+# 日々是鍛錬
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリの概要
+日々の運動習慣を記録できるアプリです  
+①ランニングと筋トレに分けて、運動した時間などをグラフで見ることができる  
+②コメント投稿・いいね機能で他に頑張っている人たちと切磋琢磨できる
+## 使用したgem (一部抜粋)
+* chart.js (グラフの描画)
+* gon (RailsとJavascriptの連携)
+* kaminari (ページネーション)
+* rspec-rails (テスト)
+* rubocop (コード解析)
+* pry-rails (デバック)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## こだわり
+幅広い年齢層の方に使って欲しいため、メイン機能である運動を記録するための操作は、アイコンを大きくする・イラストを使用することで直感的に分かりやすいデザインにしました。  
+グラフを三種類用意することで、それぞれ違った角度からデータを見ることができます。ただ闇雲にトレーニングするのではなく、ランニングと筋トレのバランスなどを分析することができます。
