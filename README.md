@@ -10,7 +10,8 @@
 ②コメント投稿・いいね機能で他に頑張っている人たちと切磋琢磨できる
 
 ## 使い方
-![output](https://user-images.githubusercontent.com/81734783/144444828-5a23e8f0-b4af-4dde-a5f4-268d54ebd1d5.gif)
+![output](https://user-images.githubusercontent.com/81734783/144445451-70356536-4b62-4fd3-9a46-c0da29cc527b.gif)
+
   
 ![screenshot](https://user-images.githubusercontent.com/81734783/144441499-e1157da7-cc10-4243-8dff-85cab62dfe66.png)
 
