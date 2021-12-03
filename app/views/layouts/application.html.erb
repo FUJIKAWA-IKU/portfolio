@@ -14,33 +14,9 @@
     <%= include_gon %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   </head>
-  <header>
-    <ul class="header-list" id="spec_within">
-      <% if @current_user %>
-        <li>
-          <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-        </li>
-      <% end %>
-      <% if session[:user_id] %>
-        <li>
-          <%= link_to("新規投稿", "/posts/new", id: "spec_new") %>
-        </li>
-        <li>
-          <%= link_to("投稿一覧", "/posts") %>
-        </li>
-        <li>
-          <%= link_to("ログアウト", "/logout", {method: "post"}) %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to("新規登録", "/users/new") %>
-        </li>
-        <li>
-          <%= link_to("ログイン", "/users/login") %>
-        </li>
-      <% end %>
-    </ul>
-  </header>
+  <% unless current_page?(root_path) %>
+    <%= render "shared/header" %>
+  <% end %>
   <body class="background">
     <%= yield %>
   </body>

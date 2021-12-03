@@ -1,3 +1,56 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.top-title {
+  text-align: center;
+  padding-top: 150px;
+  h1 {
+    color: #445252;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    
+  }
+  p {
+    font-size: 12px;
+    position: absolute;
+    left: 10px;
+  }
+}
+.footprint {
+  width: 50px;
+  img {
+    width: 100%;
+  }
+}
+
+.top-content {
+  color: #445252;
+  text-align: center;
+
+  p {
+    padding: 20px 0;
+  }
+  .port-top {
+    width: 40%;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+  
+  .port-top2 {
+    width: 50%;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.top-buttonbox {
+  padding: 200px 0;
+  text-align: center;
+}
