@@ -37,7 +37,7 @@
   <% end %>
   <div class="postwrapper">
     <div class="postindex">
-      <% @user.posts.each do |post| %>
+      <% @posts.each do |post| %>
         <div class="post">
           <div class="postleft">
             <div class="postleftsub">
@@ -59,7 +59,7 @@
           </div>
           <div class="postright">
             <p class="postcontent">
-              <%= link_to(post.content, "/posts/#{post.id}") %>
+              <%= post.content %>
             </p>
             <div class="likewrapper">
               <% @likes_count = Like.where(post_id: post.id).count %>

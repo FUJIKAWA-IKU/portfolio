@@ -27,7 +27,7 @@
         </div>
         <div class="postright">
           <p class="postcontent">
-            <%= link_to(post.content, "/posts/#{post.id}") %>
+            <%= post.content %>
           </p>
           <div class="likewrapper">
             <% @likes_count = Like.where(post_id: post.id).count %>

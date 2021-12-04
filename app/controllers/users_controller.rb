@@ -4,13 +4,9 @@ class UsersController < ApplicationController
   before_action :forbid_login_user, { only: [:new, :create, :login_form, :login] }
   before_action :ensure_current_user, { only: [:edit, :update] }
 
-  def index
-    @user = User.find_by(id: 11)
-  end
-
   def show
     @user = User.find_by(id: params[:id])
-    @posts = @user.posts.page(params[:page]).per(5)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
