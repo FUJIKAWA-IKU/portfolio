@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
 
-  get "/login", to:"users#login_form"
-  post "/login", to:"users#login"
+  get "login", to:"users#login_form"
+  post "login", to:"users#login"
   get "logout", to:"users#logout"
 
-  post "/likes/:post_id/create", to: "likes#create"
-  delete "/likes/:post_id/destroy", to: "likes#destroy"
+  post "likes/:post_id/create", to: "likes#create"
+  delete "likes/:post_id/destroy", to: "likes#destroy"
 
   get "records/new", to:"records#new"
   post "records/create", to:"records#create"
