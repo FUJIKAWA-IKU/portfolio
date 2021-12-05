@@ -36,9 +36,9 @@
   display: flex;
 
   li {
-    width : 33.33333% ; /* 未対応ブラウザ用フォールバック */
-    width : -webkit-calc(100% / 3) ;
-    width : calc(100% / 3) ;
+    width : 33.33333%;
+    width : -webkit-calc(100% / 3);
+    width : calc(100% / 3);
     
     img {
       width: 100%;
