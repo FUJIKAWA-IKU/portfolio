@@ -49,3 +49,16 @@
 .wrapper {
   padding-top: 100px;
 }
+
+.guest-loginwrapper{
+  text-align: center;
+  
+  .guest-login {
+    text-align: center;
+    display: inline-block;
+    padding: 30px;
+    margin: 70px;
+    font-size: 20px;
+    border: 1px solid ;
+  }
+}
