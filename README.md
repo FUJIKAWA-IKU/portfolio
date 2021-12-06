@@ -54,5 +54,9 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 
 
 ## その他
+予めゲストユーザーを作成していますのでそちらでもログインしてみてください  
+email : guest@example<span>.com</span>  
+password : guest  
+
 Qiitaにも少しずつ記事を挙げていますので一度ご覧いただけると嬉しいです  
 https://qiita.com/i-f
