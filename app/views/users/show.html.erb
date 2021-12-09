@@ -17,7 +17,7 @@
         password：<%= @user.password %>
       </p>
       <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <%= link_to("新規投稿", "/posts/new") %>
+      <%= link_to("つぶやく", "/posts/new") %>
     <% else %>
         <%= link_to("記録を見る", "/records/index/#{@user.id}") %>
     <% end %>

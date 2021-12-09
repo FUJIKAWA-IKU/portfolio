@@ -16,9 +16,9 @@ RSpec.feature "Post", type: :feature do
 
   scenario "ユーザーが新規投稿して投稿数が１増えること" do
     expect do
-      click_link "新規投稿"
+      click_link "つぶやく"
       fill_in "postcontent", with: "アイウエオ"
-      click_button "新規投稿"
+      click_button "つぶやき投稿"
       expect(page).to have_content "投稿を作成しました"
       expect(page).to have_content "#{test_user.name}"
       expect(page).to have_content "アイウエオ"
@@ -26,9 +26,9 @@ RSpec.feature "Post", type: :feature do
   end
 
   scenario "投稿にいいねできる" do
-    click_link "新規投稿"
+    click_link "つぶやく"
     fill_in "postcontent", with: "アイウエオ"
-    click_button "新規投稿"
+    click_button "つぶやき投稿"
     find("#spec_nolike").click
     expect(page).to have_selector '#spec_like'
     expect(test_user.likes.count).to eq(1)
