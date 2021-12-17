@@ -7,8 +7,6 @@ services:
     environment:
       POSTGRES_DATABASE: app_user_role
       POSTGRES_PASSWORD: password
-    ports:
-      - '5432:5432'
 
   web:
     build: .

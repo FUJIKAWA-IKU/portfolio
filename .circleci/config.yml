@@ -5,7 +5,6 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
           - BUNDLER_VERSION: 2.2.21
-          - PGHOST: 127.0.0.1
           - POSTGRES_USER: app_user_role
           - RAILS_ENV: test
       - image: circleci/postgres
