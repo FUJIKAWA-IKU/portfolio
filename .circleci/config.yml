@@ -16,11 +16,12 @@ jobs:
     working_directory: ~/port
     steps:
       - checkout
-      - setup_remote_docker
       - run:
-          name: Setup environment variable
+          name: Install Docker Compose
           command: |
-            echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: Start containers and verify it is working
           command: |
