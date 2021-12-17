@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -9,11 +9,12 @@ jobs:
       - image: circleci/postgres
         environment:
           - POSTGRES_USER: app_user_role
-          - POSTGRES_HOST_AUTH_METHOD: trust
+          - POSTGRES_PASSWORD: password
           - POSTGRES_DB: port_test
     working_directory: ~/port
     steps:
-      - checkout 
+      - checkout
+      - setup_remote_docker
       - run:
             name: Start containers and verify it is working
             command: |
