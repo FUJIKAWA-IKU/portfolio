@@ -4,8 +4,13 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
+          - POSTGRES_USER: app_user_role
           - RAILS_ENV: 'test'
       - image: circleci/postgres
+        environment:
+          - POSTGRES_USER: app_user_role
+          - POSTGRES_HOST_AUTH_METHOD: trust
+          - POSTGRES_DB: port_test
     working_directory: ~/port
     steps:
       - checkout 
