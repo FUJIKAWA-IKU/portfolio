@@ -25,7 +25,6 @@ jobs:
       - run:
           name: Start containers and verify it is working
           command: |
-            docker-compose down --rmi all
             docker-compose build
             docker-compose up -d
       - run:
