@@ -16,9 +16,13 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-            name: Start containers and verify it is working
-            command: |
-              docker-compose up -d
+          name: Setup environment variable
+          command: |
+            echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
+      - run:
+          name: Start containers and verify it is working
+          command: |
+            docker-compose up -d
       - run:
           name: Setup database
           command: |
@@ -28,3 +32,6 @@ jobs:
       - run:
           name: Run rspec
           command: docker-compose exec web rspec
+      - run:
+          name: Run rubocop
+          command: docker-compose exec web rubocop
