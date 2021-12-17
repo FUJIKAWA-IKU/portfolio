@@ -25,14 +25,14 @@ jobs:
       - run:
           name: Start containers and verify it is working
           command: |
-            docker-compose build
-            docker-compose up -d
+            sudo docker-compose build
+            sudo docker-compose up -d
       - run:
           name: Setup database
           command: |
-            docker-compose run web bundle install
-            docker-compose run --rm web rails db:create RAILS_ENV=test
-            docker-compose run web rails db:migrate
+            sudo docker-compose run web bundle install
+            sudo docker-compose run --rm web rails db:create RAILS_ENV=test
+            sudo docker-compose run web rails db:migrate
       - run:
           name: Run rspec
           command: docker-compose run web bundle exec rspec
