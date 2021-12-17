@@ -5,8 +5,8 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
           - BUNDLER_VERSION: 2.2.21
-          - POSTGRES_USER: app_user_role
           - RAILS_ENV: test
+          - POSTGRES_USER: app_user_role
           - PGHOST: 127.0.0.1
       - image: circleci/postgres
         environment:
@@ -16,29 +16,33 @@ jobs:
     working_directory: ~/port
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       - run:
-          name: Install Docker Compose
+          name: install dependencies
           command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+            gem install bundler -v 2.2.21
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
       - run:
-          name: Start containers and verify it is working
-          command: |
-            set -x
-            sudo docker-compose up --build -d
+          name: DBの起動を待つ
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
       - run:
           name: Setup database
           command: |
-            sudo docker-compose run web bundle install
-            sudo docker-compose run --rm web rails db:create RAILS_ENV=test
-            sudo docker-compose run web rails db:migrate
+            bundle exec rails db:create
+            bundle exec rails db:migrate
       - run:
           name: Run rspec
-          command: docker-compose run web bundle exec rspec
+          command: bundle exec rspec
       - run:
           name: Run rubocop
-          command: docker-compose run web bundle exec rubocop
+          command: bundle exec rubocop
       - run:
           name: docker-compose down
           command: docker-compose down
