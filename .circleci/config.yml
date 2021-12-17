@@ -1,0 +1,23 @@
+version: 2.1
+jobs:
+  rspec:
+    working_directory: ~/port
+    docker:
+      - image: circleci/ruby:2.6.3-node-browsers
+        environment:
+          - RAILS_ENV: 'test'
+      - image: circleci/postgres
+    steps:
+      - checkout 
+      - run:
+          name: Start containers and verify it is working
+          command: |
+            docker-compose up -d
+      - run:
+          name: Setup database
+          command: |
+            docker-compose run web rails db:create
+            docker-compose run web rails db:migrate
+      - run:
+          name: Run rspec
+          command: docker-compose exec web rspec

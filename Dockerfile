@@ -6,7 +6,6 @@ COPY Gemfile /port/Gemfile
 COPY Gemfile.lock /port/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-RUN gem install -v 6.1.4.1 rails
 COPY . /port
 
 # コンテナー起動時に毎回実行されるスクリプトを追加
