@@ -23,7 +23,8 @@ development:
 test:
   <<: *default
   database: port_test
-  host: localhost  
+  host: <%= ENV['PGHOST'] || 'db' %>
+
 
 production:
   <<: *default
