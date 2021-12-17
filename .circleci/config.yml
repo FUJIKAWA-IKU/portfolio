@@ -21,12 +21,14 @@ jobs:
       - run:
           name: Start containers and verify it is working
           command: |
+            docker-compose down --rmi all
+            docker-compose build
             docker-compose up -d
       - run:
           name: Setup database
           command: |
             docker-compose run web bundle install
-            docker-compose run web rails db:create
+            docker-compose run --rm web rails db:create
             docker-compose run web rails db:migrate
       - run:
           name: Run rspec
@@ -34,3 +36,6 @@ jobs:
       - run:
           name: Run rubocop
           command: docker-compose exec web rubocop
+      - run:
+          name: docker-compose down
+          command: docker-compose down
