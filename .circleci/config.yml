@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Setup database
           command: |
-            sudo ln -s libffi.so.6 libffi.so.7
+            sudo ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7.1.0 /usr/lib/x86_64-linux-gnu/libffi.so.6
             bundle exec rails db:create
             bundle exec rails db:migrate
             bundle exec rails webpacker:install
