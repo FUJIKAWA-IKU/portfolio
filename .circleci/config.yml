@@ -23,7 +23,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            gem install bundler -v 2.2.21
+            gem install bundler -v 2.2.33
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -35,7 +35,6 @@ jobs:
       - run:
           name: Setup database
           command: |
-            gem install bundler:2.2.33
             bundle exec rails db:create
             bundle exec rails db:migrate
             bundle exec rails webpacker:install
