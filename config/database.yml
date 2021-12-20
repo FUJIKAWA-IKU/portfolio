@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-  host: db
+  # host: db
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 
@@ -23,7 +23,7 @@ development:
 test:
   <<: *default
   database: port_test
-  # host: <%= ENV['PGHOST'] || 'db' %>
+  host: <%= ENV['POSTGRES_ROOT_HOST'] || 'db' %>
 
 
 production:

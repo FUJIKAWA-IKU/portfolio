@@ -18,9 +18,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      PGHOST: 127.0.0.1
       DATABASE_PORT: 5432
       DATABASE_USER: app_user_role
       DATABASE_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
     depends_on:
+      - db
+    links:
       - db
