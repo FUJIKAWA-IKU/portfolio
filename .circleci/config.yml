@@ -35,6 +35,7 @@ jobs:
       - run:
           name: Setup database
           command: |
+            gem install bundler:2.2.33
             bundle exec rails db:create
             bundle exec rails db:migrate
             bundle exec rails webpacker:install
