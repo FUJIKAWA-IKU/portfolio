@@ -5,7 +5,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: app_user_role
+      POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
       POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
     ports:
       - '5432:5432'
@@ -19,8 +19,7 @@ services:
       - "3000:3000"
     environment:
       DATABASE_PORT: 5432
-      DATABASE_USER: app_user_role
+      DATABASE_USER: <%= ENV['POSTGRES_USER'] %>
       DATABASE_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
     depends_on:
       - db
-

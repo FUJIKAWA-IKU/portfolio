@@ -6,10 +6,10 @@ jobs:
         environment:
           - BUNDLER_VERSION: 2.2.33
           - RAILS_ENV: test
-          - POSTGRES_USER: app_user_role
+          - POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
       - image: circleci/postgres
         environment:
-          - POSTGRES_USER: app_user_role
+          - POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
           - POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
           - POSTGRES_DB: port_test
     environment:
@@ -31,7 +31,7 @@ jobs:
           paths:
             - ./vendor/bundle
       - run:
-          name: DBの起動を待つ
+          name: Wait DB start-up
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
       - run:
           name: Setup database
