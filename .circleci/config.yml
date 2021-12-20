@@ -32,6 +32,7 @@ jobs:
       - run:
           name: "Node.js と npm の更新"
           command: |
+            npm install -g npm@latest
             curl -sSL "https://nodejs.org/dist/v10.17.0/node-v10.17.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.17.0-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
       - run:
