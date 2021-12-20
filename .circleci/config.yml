@@ -45,6 +45,3 @@ jobs:
       - run:
           name: Run rubocop
           command: bundle exec rubocop
-      - run:
-          name: docker-compose down
-          command: docker-compose down
