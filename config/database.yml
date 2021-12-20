@@ -23,7 +23,7 @@ development:
 test:
   <<: *default
   database: port_test
-  # host: <%= ENV['PGHOST'] || 'db' %>
+  host: <%= ENV['PGHOST'] || 'db' %>
 
 
 production:
