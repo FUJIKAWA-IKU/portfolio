@@ -13,7 +13,7 @@ jobs:
           - POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
           - POSTGRES_DB: port_test
     environment:
-      - PGHOST: 127.0.0.1
+      - PGHOST: <%= ENV['PGHOST'] %>
     working_directory: ~/port
     steps:
       - checkout
