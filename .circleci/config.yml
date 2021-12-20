@@ -6,11 +6,11 @@ jobs:
         environment:
           - BUNDLER_VERSION: 2.2.33
           - RAILS_ENV: test
-          - POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
-          - PGHOST: <%= ENV['PGHOST'] %>
+          - POSTGRES_USER: app_user_role
+          - PGHOST: 127.0.0.1
       - image: circleci/postgres
         environment:
-          - POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
+          - POSTGRES_USER: app_user_role
           - POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
           - POSTGRES_DB: port_test
     working_directory: ~/port
