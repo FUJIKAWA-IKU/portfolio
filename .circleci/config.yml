@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/ruby:2.6.8-node-browsers
         environment:
           - BUNDLER_VERSION: 2.2.21
           - RAILS_ENV: test
@@ -29,12 +29,6 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
-      - run:
-          name: "Node.js と npm の更新"
-          command: |
-            npm install -g npm@latest
-            curl -sSL "https://nodejs.org/dist/v10.17.0/node-v10.17.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.17.0-linux-x64/bin/node
-            curl https://www.npmjs.com/install.sh | sudo bash
       - run:
           name: DBの起動を待つ
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
