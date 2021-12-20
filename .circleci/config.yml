@@ -10,8 +10,8 @@ jobs:
           - PGHOST: 127.0.0.1
       - image: circleci/postgres
         environment:
-          - POSTGRES_USER: app_user_role
-          - POSTGRES_PASSWORD: password
+          - POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
+          - POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
           - POSTGRES_DB: port_test
     working_directory: ~/port
     steps:
