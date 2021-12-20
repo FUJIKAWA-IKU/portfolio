@@ -23,5 +23,4 @@ services:
       DATABASE_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
     depends_on:
       - db
-    links:
-      - db
+
