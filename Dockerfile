@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.8
 RUN apt-get update -qq && apt-get install -y postgresql-client
 # Node.jsをインストール
 RUN curl -sL https://deb.nodesource.com/setup_9.X | sudo -E bash -
@@ -7,7 +7,7 @@ RUN sudo apt-get install -y nodejs
 WORKDIR /port
 COPY Gemfile /port/Gemfile
 COPY Gemfile.lock /port/Gemfile.lock
-RUN gem install bundler
+RUN gem install -v 2.2.33 bundler 
 RUN bundle install
 RUN gem install -v 6.1.4.1 rails
 COPY . /port
