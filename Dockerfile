@@ -1,8 +1,5 @@
 FROM ruby:2.6.8
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-# Node.jsをインストール
-# RUN curl -sL https://deb.nodesource.com/setup_9.X | sudo -E bash -
-# RUN sudo apt-get install -y nodejs
 
 WORKDIR /port
 COPY Gemfile /port/Gemfile
