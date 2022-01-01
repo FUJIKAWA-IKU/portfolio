@@ -55,7 +55,7 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 ## 使用した技術
 * サーバーサイド言語：Ruby
 * データベース：PostgreSQL
-* インフラ：Heroku, Docker&docker-compose, CircleCI
+* インフラ：AWS, Docker&docker-compose, CircleCI
 * ソース管理：Git
 * フロント：HTML, CSS, JS
 * テストフレームワーク：RSpec  
