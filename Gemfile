@@ -33,10 +33,6 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rubocop-airbnb'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3', '~> 1.4'
 end
@@ -60,6 +56,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rubocop-airbnb'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner-active_record'
