@@ -40,6 +40,10 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 ![erd-1](https://user-images.githubusercontent.com/81734783/144443246-2675c53a-8474-4ce0-ba4d-7b08e5484404.png)
 
 
+## インフラ構成図
+![インフラ構成図 drawio](https://user-images.githubusercontent.com/81734783/148368850-d7af9b5f-15a6-4dfe-a8a5-d8563f1e75a1.png)
+
+
 ## 使用したgem (一部抜粋)
 * chart.js (グラフの描画)
 * gon (RailsとJavascriptの連携)
@@ -55,7 +59,7 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 ## 使用した技術
 * サーバーサイド言語：Ruby
 * データベース：PostgreSQL
-* インフラ：AWS, Docker&docker-compose, CircleCI
+* インフラ：AWS（EC2, RDS, Internet Gateway, Route53, ELB, Certificate Manager ）, Docker&docker-compose, CircleCI
 * ソース管理：Git
 * フロント：HTML, CSS, JS
 * テストフレームワーク：RSpec  
