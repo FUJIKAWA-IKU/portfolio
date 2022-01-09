@@ -7,6 +7,10 @@ RSpec.feature "Post", type: :feature do
     sign_in_as(test_user)
   end
 
+  scenario "ログインできること" do
+    expect(page).to have_content "ログインしました"
+  end
+
   scenario "ユーザーが新規投稿して投稿数が１増えること" do
     expect do
       create_tweet

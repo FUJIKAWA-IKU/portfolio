@@ -15,9 +15,4 @@ RSpec.feature "User", type: :feature do
       expect(page).to have_content "#{test_user.password}"
     end.to change { User.count }.by(1)
   end
-
-  scenario "ログインできること" do
-    sign_in_as(test_user)
-    expect(page).to have_content "ログインしました"
-  end
 end
