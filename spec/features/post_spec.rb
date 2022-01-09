@@ -25,6 +25,17 @@ RSpec.feature "Post", type: :feature do
     end.to change(test_user.posts, :count).by(1)
   end
 
+  scenario "ユーザーがつぶやきを削除すれば投稿数が１減ること" do
+    expect do
+      click_link "つぶやく"
+      fill_in "postcontent", with: "アイウエオ"
+      click_button "つぶやき投稿"
+      expect(page).to have_content "投稿を作成しました"
+      expect(page).to have_content "#{test_user.name}"
+      expect(page).to have_content "アイウエオ"
+    end.to change(test_user.posts, :count).by(1)
+  end
+
   scenario "投稿にいいねできる" do
     click_link "つぶやく"
     fill_in "postcontent", with: "アイウエオ"

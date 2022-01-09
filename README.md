@@ -11,9 +11,11 @@ password : guest
 
 
 ## 機能一覧
-日々の運動習慣を記録できるアプリです  
-1. 運動した時間や走行距離などをグラフで見ることができます  
-2. つぶやき投稿・いいね機能で他に運動を頑張っている人たちと切磋琢磨できます  
+日々の運動習慣を記録できるアプリで、機能は大きく分けて三つあります。
+
+1. 運動した時間や走行距離などをグラフとして描画できる機能
+2. 基本的なCRUD機能を持つつぶやき投稿（つぶやきの新規作成、編集、削除、一覧表示）
+3. つぶやき投稿に対するいいね機能
 
 
 ## 使い方
@@ -41,7 +43,18 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 
 
 ## インフラ構成図
+開発はdocker上で行いました。git pushするとCircleCIが起動し、RSpecとRubocopを使ったテストを実行させるように設定しています。  
+またAWSを導入しており、独自ドメインの取得およびhttps化も設定しています。
 ![インフラ構成図 drawio](https://user-images.githubusercontent.com/81734783/148368850-d7af9b5f-15a6-4dfe-a8a5-d8563f1e75a1.png)
+
+  
+## 使用した技術
+* サーバーサイド言語：Ruby
+* データベース：PostgreSQL
+* インフラ：AWS（EC2, RDS, Internet Gateway, Route53, ELB, Certificate Manager ）, Docker&docker-compose, CircleCI
+* ソース管理：Git
+* フロント：HTML, CSS, JS
+* テストフレームワーク：RSpec  
 
 
 ## 使用したgem (一部抜粋)
@@ -55,16 +68,7 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 * launchy (デバック)
 * pry-rails (デバック)  
 
-  
-## 使用した技術
-* サーバーサイド言語：Ruby
-* データベース：PostgreSQL
-* インフラ：AWS（EC2, RDS, Internet Gateway, Route53, ELB, Certificate Manager ）, Docker&docker-compose, CircleCI
-* ソース管理：Git
-* フロント：HTML, CSS, JS
-* テストフレームワーク：RSpec  
-
 
 ## その他
-知識のアウトプットの場として、ほぼ毎日Qiitaに記事を挙げていますので一度ご覧いただけると嬉しいです  
+知識のアウトプットの場として、Qiitaに記事を挙げていますので一度ご覧いただけると嬉しいです  
 https://qiita.com/i-f
