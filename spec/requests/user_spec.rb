@@ -1,15 +1,12 @@
 require 'rails_helper'
-# require 'pry'
 
 RSpec.describe "Sessions", type: :request do
-
   describe "GET users" do
     let(:test_user) { create(:user) }
     let(:test_post) { create(:post, user: test_user) }
 
     before do
-      session_params = { user: { email: test_user.email, password: test_user.password } }
-      post "/login", params: session_params
+      sign_in_request_as(test_user)
       test_post
       get user_path(test_user.id)
     end

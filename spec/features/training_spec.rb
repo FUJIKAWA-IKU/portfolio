@@ -4,10 +4,7 @@ RSpec.feature "Training", type: :feature do
   let(:test_user) { create(:user) }
 
   background do
-    visit "/login"
-    fill_in "spec_email", with: "#{test_user.email}"
-    fill_in "spec_password", with: "#{test_user.password}"
-    click_button "ログイン"
+    sign_in_as(test_user)
   end
 
   scenario "筋トレの記録ができる" do

@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
-
   describe "GET users/:id" do
     let(:test_user) { create(:user) }
     let(:test_record) { create(:record, user: test_user) }
     let(:test_training) { create(:training, user: test_user) }
 
     before do
-      session_params = { user: { email: test_user.email, password: test_user.password } }
-      post "/login", params: session_params
+      sign_in_request_as(test_user)
     end
 
     it "ランニング記録ページのリクエストが成功していること" do

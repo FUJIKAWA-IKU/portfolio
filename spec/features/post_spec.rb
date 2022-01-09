@@ -4,42 +4,36 @@ RSpec.feature "Post", type: :feature do
   let(:test_user) { create(:user) }
 
   background do
-    visit "/login"
-    fill_in "spec_email", with: "#{test_user.email}"
-    fill_in "spec_password", with: "#{test_user.password}"
-    click_button "ログイン"
-  end
-
-  scenario "ログインできること" do
-    expect(page).to have_content "ログインしました"
+    sign_in_as(test_user)
   end
 
   scenario "ユーザーが新規投稿して投稿数が１増えること" do
     expect do
-      click_link "つぶやく"
-      fill_in "postcontent", with: "アイウエオ"
-      click_button "つぶやき投稿"
+      create_tweet
       expect(page).to have_content "投稿を作成しました"
       expect(page).to have_content "#{test_user.name}"
       expect(page).to have_content "アイウエオ"
     end.to change(test_user.posts, :count).by(1)
   end
 
-  scenario "ユーザーがつぶやきを削除すれば投稿数が１減ること" do
-    expect do
-      click_link "つぶやく"
-      fill_in "postcontent", with: "アイウエオ"
-      click_button "つぶやき投稿"
-      expect(page).to have_content "投稿を作成しました"
-      expect(page).to have_content "#{test_user.name}"
-      expect(page).to have_content "アイウエオ"
-    end.to change(test_user.posts, :count).by(1)
-  end
+  # scenario "ユーザーがつぶやきを削除すれば投稿数が１減ること" do
+  #   expect do
+  #     create_tweet
+  #     click_link "編集"
+  #     click_button "削除"
+  #     expect(page).to have_content "削除しました"
+  #   end.to change(test_user.posts, :count).by(-1)
+  # end
 
   scenario "投稿にいいねできる" do
-    click_link "つぶやく"
-    fill_in "postcontent", with: "アイウエオ"
-    click_button "つぶやき投稿"
+    create_tweet
+    find("#spec_nolike").click
+    expect(page).to have_selector '#spec_like'
+    expect(test_user.likes.count).to eq(1)
+  end
+
+  scenario "投稿のいいねを解除できる" do
+    create_tweet
     find("#spec_nolike").click
     expect(page).to have_selector '#spec_like'
     expect(test_user.likes.count).to eq(1)
