@@ -26,4 +26,9 @@ RSpec.describe Training, type: :model do
     test_training.user_id = nil
     expect(test_training).not_to be_valid
   end
+
+  it "時間において300分を超えると無効な状態であること" do
+    test_training.time = 301
+    expect(test_training).not_to be_valid
+  end
 end

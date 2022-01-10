@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe "Sessions", type: :request do
   describe "GET users/:id" do
