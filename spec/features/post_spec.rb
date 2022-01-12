@@ -20,15 +20,6 @@ RSpec.feature "Post", type: :feature do
     end.to change(test_user.posts, :count).by(1)
   end
 
-  # scenario "ユーザーがつぶやきを削除すれば投稿数が１減ること" do
-  #   expect do
-  #     create_tweet
-  #     click_link "編集"
-  #     click_button "削除"
-  #     expect(page).to have_content "削除しました"
-  #   end.to change(test_user.posts, :count).by(-1)
-  # end
-
   scenario "投稿にいいねできる" do
     create_tweet
     find("#spec_nolike").click
@@ -44,5 +35,28 @@ RSpec.feature "Post", type: :feature do
     find("#spec_like").click
     expect(page).to have_selector '#spec_nolike'
     expect(test_user.likes.count).to eq(0)
+  end
+
+  feature "ユーザーの詳細ページ" do
+    background do
+      create_tweet
+    end
+    
+    scenario "適切な名前が表示されていること" do
+      expect(page).to have_selector(".postusername", text: test_user.name)
+    end
+
+    scenario "適切なつぶやき内容が表示されていること" do
+      expect(page).to have_selector(".postcontent", text: test_user.posts.first.content)
+    end
+
+    scenario "適切な画像が表示されていること" do
+      expect(page).to have_selector("img[src$='/user_images/#{test_user.image_name}']")
+    end
+
+    scenario "編集のリンク先が正しいこと" do
+      click_link "編集"
+      expect(current_path).to eq edit_post_path(test_user.posts.first.id)
+    end
   end
 end

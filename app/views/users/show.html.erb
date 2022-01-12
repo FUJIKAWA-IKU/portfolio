@@ -31,7 +31,7 @@
         <%= link_to image_tag("/images/workout.png"), "/trainings/new", id: "spec_training" %>
       </li>
       <li>
-        <%= link_to image_tag("/images/goodjob.png"), "/records/index/#{@user.id}" %>
+        <%= link_to image_tag("/images/goodjob.png", { :alt => "運動記録詳細ページへのリンク" }), "/records/index/#{@user.id}" %>
       </li>
     </ul>
   <% end %>
