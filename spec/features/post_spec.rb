@@ -20,6 +20,17 @@ RSpec.feature "Post", type: :feature do
     end.to change(test_user.posts, :count).by(1)
   end
 
+  scenario "ユーザーが投稿を編集できること" do
+    expect do
+      create_tweet
+      click_link "編集"
+      fill_in "postcontent", with: "update_アイウエオ"
+      click_link "更新"
+      expect(page).to have_content "投稿を編集しました"
+      expect(page).to have_content "update_アイウエオ"
+    end
+  end
+
   scenario "投稿にいいねできる" do
     create_tweet
     find("#spec_nolike").click
@@ -30,8 +41,6 @@ RSpec.feature "Post", type: :feature do
   scenario "投稿のいいねを解除できる" do
     create_tweet
     find("#spec_nolike").click
-    expect(page).to have_selector '#spec_like'
-    expect(test_user.likes.count).to eq(1)
     find("#spec_like").click
     expect(page).to have_selector '#spec_nolike'
     expect(test_user.likes.count).to eq(0)
@@ -41,7 +50,7 @@ RSpec.feature "Post", type: :feature do
     background do
       create_tweet
     end
-    
+
     scenario "適切な名前が表示されていること" do
       expect(page).to have_selector(".postusername", text: test_user.name)
     end

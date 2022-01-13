@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     @post.content = params[:post][:content]
     if @post.save
       redirect_to("/posts")
-      flash[:notice] = "編集しました"
+      flash[:notice] = "投稿を編集しました"
     else
       render("posts/edit")
     end

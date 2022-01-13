@@ -36,8 +36,7 @@ RSpec.describe "Sessions", type: :request do
     let(:test_user) { create(:user) }
 
     before do
-      session_params = { user: { email: test_user.email, password: test_user.password } }
-      post "/login", params: session_params
+      sign_in_request_as(test_user)
     end
 
     it "ユーザー編集ページのリクエストが成功していること" do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "User", type: :feature do
-  
+
   feature "ユーザーの新規登録" do
     let(:test_user) { build(:user) }
 
@@ -24,6 +24,18 @@ RSpec.feature "User", type: :feature do
 
     background do
       sign_in_as(test_user)
+    end
+
+    scenario "ユーザーがユーザー情報を編集できること" do
+      expect do
+        click_link "編集"
+        fill_in "spec_email", with: "update_#{test_user.email}"
+        fill_in "spec_password", with: "update_#{test_user.password}"
+        click_link "更新する"
+        expect(page).to have_content "ユーザー情報を編集しました"
+        expect(page).to have_content "update_#{test_user.email}"
+        expect(page).to have_content "update_#{test_user.password}"
+      end
     end
 
     scenario "適切な名前が表示されていること" do
