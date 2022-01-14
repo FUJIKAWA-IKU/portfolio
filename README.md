@@ -39,7 +39,7 @@ Workoutアイコン：筋トレした時間・部位を記録できます
 
 
 ## ER図
-![ER図 drawio](https://user-images.githubusercontent.com/81734783/149464155-2211a531-6386-432f-867b-e2c2e2e129d3.png)
+![ER図 drawio](https://user-images.githubusercontent.com/81734783/149464893-18315353-c836-4ae8-899d-b44baefc4568.png)
 
 ## インフラ構成図
 開発はdocker上で行いました。git pushするとCircleCIが起動し、RSpecとRubocopを使ったテストを実行させるように設定しています。  
