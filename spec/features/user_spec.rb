@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "User", type: :feature do
-
   feature "ユーザーの新規登録" do
     let(:test_user) { build(:user) }
 
