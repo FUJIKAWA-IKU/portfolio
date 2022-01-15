@@ -85,4 +85,7 @@
     </div>
     <%= paginate @posts %>
   </div>
+  <% @like_posts.each do |like_post| %>
+    <%= like_post.content %>
+  <% end %>
 </div>

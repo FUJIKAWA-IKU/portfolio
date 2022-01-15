@@ -1,0 +1,8 @@
+<ul class="postform">
+  <%= form_for([@post, @comment], url: { controller: 'comments', action: 'create' }) do |f| %>
+  <li>
+      <%= f.text_area :body, class: "textarea"%>
+  </li>
+  <%= f.submit "コメント投稿", class: "postbutton" %>
+  <% end %>
+</ul>

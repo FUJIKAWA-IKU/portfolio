@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "home#top"
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:new, :create, :destroy]
+  end
 
   get "login", to:"users#login_form"
   post "login", to:"users#login"

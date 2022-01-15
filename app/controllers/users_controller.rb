@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
+    @like_posts = @user.like_posts
   end
 
   def new
