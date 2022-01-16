@@ -1,0 +1,16 @@
+<div>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+</div>
+<% @users.each do |user| %>
+  <div class="profile">
+    <div class="postimg">
+      <img src="<%= "/user_images/#{user.image_name}" %>">
+    </div>
+    <p class="username">
+      <%= user.name %>
+    </p>
+    <%= link_to("記録を見る", "/records/index/#{user.id}") %>
+  </div>
+<% end %>
