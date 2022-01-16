@@ -72,18 +72,33 @@
         }
   
         .likewrapper {
-          text-align: right;
-          align-self: end;
+          display: flex;
+          justify-content: space-between;
           font-size: 12px;
-          .like {
+
+          .commentbox {
+            text-align: left;
             display: inline-block;
-            #spec_like {
-              border: none;
-              background-color: #fff;
-            }
-            #spec_nolike {
-              border: none;
-              background-color: #fff;
+            align-self: end;
+          }
+
+          .likebox {
+            text-align: right;
+            display: inline-block;
+            align-self: end;
+
+            .like {
+              display: inline-block;
+
+              #spec_like {
+                border: none;
+                background-color: #fff;
+              }
+
+              #spec_nolike {
+                border: none;
+                background-color: #fff;
+              }
             }
           }
         }
@@ -115,4 +130,8 @@
     border: 1px solid rgba(0,51,102,1);
     border-radius: 10%;
   }
+}
+
+.commentlink {
+  text-align: center;
 }

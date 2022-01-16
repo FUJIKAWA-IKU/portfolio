@@ -1,52 +1,61 @@
 <div class="postwrapper">
   <div class="postindex">
-    <div class="post">
-      <div class="postleft">
-        <div class="postleftsub">
-          <div class="postimg">
-            <img src="<%= "/user_images/#{@post.user.image_name}" %>">
+      <div class="post">
+        <div class="postleft">
+          <div class="postleftsub">
+            <div class="postimg">
+              <img src="<%= "/user_images/#{@post.user.image_name}" %>">
+            </div>
+            <p class="postusername">
+              <%= link_to(@post.user.name, "/users/#{@post.user.id}") %>
+            </p>
           </div>
-          <p class="postusername">
-            <%= link_to(@post.user.name, "/users/#{@post.user.id}") %>
+          <p class="today">
+            <%= l @post.created_at %>
+          </p>
+          <p class="postedit">
+            <% if @post.user.id == @current_user.id %>
+              <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+            <% end %>
           </p>
         </div>
-        <p class="today">
-          <%= l @post.created_at %>
-        </p>
-        <p class="postedit">
-          <% if @post.user.id == @current_user.id %>
-            <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-          <% end %>
-        </p>
-      </div>
-      <div class="postright">
-        <p class="postcontent">
-          <%= @post.content %>
-        </p>
-        <div class="likewrapper">
-          <% @likes_count = Like.where(post_id: @post.id).count %>
-            <%= @likes_count %>
-          <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
-            <div class="like">
-              <%= button_to("/likes/#{@post.id}/destroy", {method: :delete, id: "spec_like"}) do %>
-              <img src ="/images/like2.png">
-              <span class="otsukare">おつかれさま！</span>
+        <div class="postright">
+          <p class="postcontent">
+            <%= link_to(@post.content, "/posts/#{@post.id}") %>
+          </p>
+          <div class="likewrapper">
+            <div class="commentbox">
+              コメント: 
+              <% @comments = Comment.where(post_id: @post.id) %>
+              <%= @comments.count %>
             </div>
-            <% end %>
-          <% else %>
-            <div class="like">
-              <%= button_to("/likes/#{@post.id}/create", method: :post, id: "spec_nolike") do %>
-              <img src ="/images/like.png">
+            <div class="likebox">
+              <% @likes_count = Like.where(post_id: @post.id).count %>
+              <%= @likes_count %>
+              <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+                <div class="like">
+                  <%= button_to("/likes/#{@post.id}/destroy", {method: :delete, id: "spec_like"}) do %>
+                  <img src ="/images/like2.png">
+                  <span class="otsukare">おつかれさま！</span>
+                </div>
+                <% end %>
+              <% else %>
+                <div class="like">
+                  <%= button_to("/likes/#{@post.id}/create", method: :post, id: "spec_nolike") do %>
+                  <img src ="/images/like.png">
+                </div>
+                <% end %>
+              <% end %>
             </div>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
-<%= link_to("コメントする", new_post_comment_path(@post, @comment)) %>
+<div class="commentlink">
+  <%= link_to("コメントする", new_post_comment_path(@post, @comment)) %>
+</div>
 
 <div class="postwrapper">
   <% @comments.each do |comment| %>
