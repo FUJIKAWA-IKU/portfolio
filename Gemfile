@@ -49,6 +49,11 @@ group :development do
   # gem 'spring'
   # gem 'spring-commands-rspec'
   gem 'rails-erd'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do

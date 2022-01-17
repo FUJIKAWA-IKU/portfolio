@@ -16,4 +16,9 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to("/posts")
   end
+
+  def index
+    @user = User.find_by(id: params[:user_id])
+    @like_posts = @user.like_posts
+  end
 end

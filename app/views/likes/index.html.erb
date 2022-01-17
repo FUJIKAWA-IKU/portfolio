@@ -1,51 +1,6 @@
-<div>
-  <div>
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% end %>
-  </div>
-  <div class="profile">
-    <div class="postimg">
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
-    </div>
-    <p class="username">
-      <%= @user.name %>
-    </p>
-    <% if @user.id == @current_user.id %>
-      <p class="privacy">
-        email：<%= @user.email %>, 
-        password：<%= @user.password %>
-      </p>
-      <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <%= link_to("つぶやく", "/posts/new") %>
-      <%= link_to("フォロー一覧", follows_user_path(@user.id)) %>
-      <%= link_to("フォロワー一覧", followers_user_path(@user.id)) %>
-      <%= link_to("いいね一覧", user_likes_path(@user.id)) %>
-    <% else %>
-      <% if @user.followed_by?(@current_user) %>
-        <p><%= button_to "フォロー済み", user_relationship_path(@user.id), method: :delete %></p>
-      <% else %>
-        <p><%= button_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
-      <% end %>
-      <%= link_to("記録を見る", "/records/index/#{@user.id}") %>
-    <% end %>
-  </div>
-  <% if @user.id == @current_user.id %>
-    <ul class="iconbox">
-      <li>
-        <%= link_to image_tag("/images/running.png"), "/records/new", id: "spec_record" %>
-      </li>
-      <li>
-        <%= link_to image_tag("/images/workout.png"), "/trainings/new", id: "spec_training" %>
-      </li>
-      <li>
-        <%= link_to image_tag("/images/goodjob.png", { :alt => "運動記録詳細ページへのリンク" }), "/records/index/#{@user.id}" %>
-      </li>
-    </ul>
-  <% end %>
-  <div class="postwrapper">
-    <div class="postindex">
-    <% @posts.each do |post| %>
+<div class="postwrapper">
+  <div class="postindex">
+    <% @like_posts.each do |post| %>
       <div class="post">
         <div class="postleft">
           <div class="postleftsub">
@@ -97,7 +52,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-    <%= paginate @posts %>
   </div>
 </div>

@@ -78,7 +78,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to("/users/#{@user.id}")
       flash[:notice] = "ログインしました"
-    else
+    elsif params[:user][:email] == nil || params[:user][:password] == nil
+      @error_message = "メールとパスワードを入力してください"
+      @email = params[:user][:email]
+      @password = params[:user][:password]
+      render("users/login_form")
+    elsif 
+      @user = User.new
       @error_message = "メールまたはパスワードが間違っています"
       @email = params[:user][:email]
       @password = params[:user][:password]
